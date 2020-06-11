@@ -171,3 +171,13 @@ class TerminalState extends BaseState {
         this.type = 'Terminal';
     }
 }
+
+module.exports = {
+    InitialState, EncounterState, EncounterEndState,
+    ConditionOnsetState, ConditionEndState, AlleryOnsetState,
+    AllergyEndState, MedicationOrderState, MedicationEndState,
+    CarePlanStartState, CarePlanEndState, ProcedureState,
+    ImagingStudyState, DeviceState, DeviceEndState,
+    SupplyListState, VitalSignState, ObservationState, MultiObservationState,
+    DiagnosticReportState, SymptomState, DeathState, TerminalState
+}
