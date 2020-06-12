@@ -15,6 +15,12 @@ class InitialState extends BaseState {
         super(name);
         this.type = 'Initial';
     }
+    toJSON() {
+        return {
+            "type": this.type,
+            "direct_transition": this.name
+        }
+    }
 }
 class EncounterState extends BaseState {
     constructor(name, encounter_class, codes) {
@@ -35,6 +41,12 @@ class EncounterEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'EncounterEnd';
+    }
+    toJSON() {
+        return {
+            "type": this.type,
+            "direct_transition": this.name
+        }
     }
 }
 class ConditionOnsetState extends BaseState {
@@ -57,6 +69,12 @@ class ConditionEndState extends BaseState {
         super(name);
         this.type = 'ConditionEnd';
     }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
+    }
 }
 class AllergyOnsetState extends BaseState {
     constructor(name, target_encounter, codes) {
@@ -78,6 +96,12 @@ class AllergyEndState extends BaseState {
         super(name);
         this.type = 'AllergyEnd';
     }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
+    }
 }
 class MedicationOrderState extends BaseState {
     constructor(name, codes) {
@@ -97,6 +121,12 @@ class MedicationEndState extends BaseState {
         super(name);
         this.type = 'MedicationEnd';
     }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
+    }
 }
 class CarePlanStartState extends BaseState {
     constructor(name, codes) {
@@ -115,6 +145,12 @@ class CarePlanEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'CarePlanEnd';
+    }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
     }
 }
 class ProcedureState extends BaseState {
@@ -165,6 +201,12 @@ class DeviceEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'DeviceEnd';
+    }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
     }
 }
 class SupplyListState extends BaseState {
@@ -235,8 +277,8 @@ class MultiObservationState extends BaseState {
 class DiagnosticReportState extends BaseState {
     constructor(name, number_of_observations, codes) {
         super(name);
-        this.type = 'DiagnosticReport';
-        this.number_of_observations = number_of_observations;
+        this.type = 'DiagnosticReport',
+        this.number_of_observations = number_of_observations,
         this.codes = codes;
     }
     toJSON() {
@@ -270,11 +312,23 @@ class DeathState extends BaseState {
         super(name);
         this.type = 'Death';
     }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
+    }
 }
 class TerminalState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'Terminal';
+    }
+    toJSON() {
+        return {
+            "type":this.type,
+            "direct_transition":this.name
+        }
     }
 }
 
