@@ -4,7 +4,7 @@ const STATE_LOOKUP = {
     [`${prefix}Encounter`]: classes.EncounterState,
     [`${prefix}Condition`]: classes.ConditionOnsetState,
     [`${prefix}AllergyIntolerance`]: classes.AllergyOnsetState,
-    [`${prefix}MedicationOrder`]: classes.MedicationOrderState,
+    [`${prefix}Medication`]: classes.MedicationOrderState,
     [`${prefix}CarePlan`]: classes.CarePlanStartState,
     [`${prefix}Procedure`]: classes.ProcedureState,
     [`${prefix}ImagingStudy`]: classes.ImagingStudyState,
@@ -14,4 +14,4 @@ const STATE_LOOKUP = {
     [`${prefix}DiagnosticReport`]: classes.DiagnosticReportState
 };
 
-module.exports = STATE_LOOPUP;
+module.exports = STATE_LOOKUP;
