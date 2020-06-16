@@ -3,6 +3,12 @@ class BaseState {
         this.name = name;
         this.remarks = [];
     }
+    toJSON(){
+        return{
+        "type":this.type,
+        "direct_transition":this.name
+        }
+    }
 }
 class InitialState extends BaseState {
     constructor(name) {
@@ -11,8 +17,7 @@ class InitialState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
-            "direct_transition": this.name
+            ...super.toJSON()
         }
     }
 }
@@ -25,11 +30,10 @@ class EncounterState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
-            "encounter_class":this.encounter_class,
+            ...super.toJSON(),
             "codes":this.codes,
-            "direct_transition":this.name
-        }
+            "encounter_class":this.encounter_class
+        };
     }
 }
 class EncounterEndState extends BaseState {
@@ -39,8 +43,7 @@ class EncounterEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
-            "direct_transition": this.name
+            ...super.toJSON()
         }
     }
 }
@@ -53,10 +56,9 @@ class ConditionOnsetState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "target_encounter":this.target_encounter,
-            "codes":this.codes,
-            "direct_transition":this.name
+            "codes":this.codes
         }
     }
 }
@@ -67,12 +69,11 @@ class ConditionEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
-class AlleryOnsetState extends BaseState {
+class AllergyOnsetState extends BaseState {
     constructor(name, target_encounter, codes) {
         super(name);
         this.type = 'AllergyOnset';
@@ -81,10 +82,9 @@ class AlleryOnsetState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "target_encounter":this.target_encounter,
-            "codes":this.codes,
-            "direct_transition":this.name
+            "codes":this.codes
         }
     }
 }
@@ -95,8 +95,7 @@ class AllergyEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -108,9 +107,8 @@ class MedicationOrderState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "codes":this.codes,
-            "direct_transition":this.name
+            ...super.toJSON(),
+            "codes":this.codes
         }
     }
 }
@@ -121,8 +119,7 @@ class MedicationEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -134,9 +131,8 @@ class CarePlanStartState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "codes":this.codes,
-            "direct_transition":this.name
+            ...super.toJSON(),
+            "codes":this.codes
         }
     }
 }
@@ -147,8 +143,7 @@ class CarePlanEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -161,10 +156,9 @@ class ProcedureState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
+            ...super.toJSON(),
             "codes": this.codes,
-            "duration": this.duration,
-            "direct_transition": this.name
+            "duration": this.duration
         }
     }
 }
@@ -177,10 +171,10 @@ class ImagingStudyState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "procedure_code":this.procedure_code,
-            "series":this.series,
-            "direct_transition":this.name
+            "series":this.series
+
         }
     }
 }
@@ -192,9 +186,8 @@ class DeviceState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "code":this.code,
-            "direct_transition":this.name
+            ...super.toJSON(),
+            "code":this.code
         }
     }
 }
@@ -205,8 +198,7 @@ class DeviceEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -218,9 +210,9 @@ class SupplyListState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "supplies":this.supplies,
-            "direct_transition":this.name
+            ...super.toJSON(),
+            "supplies":this.supplies
+ 
         }
     }
 }
@@ -233,10 +225,10 @@ class VitalSignState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "vital_sign":this.vital_sign,
-            "unit":this.unit,
-            "direct_transition":this.name
+            "unit":this.unit
+
         }
     }
 }
@@ -250,11 +242,11 @@ class ObservationState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "category":this.category,
             "unit":this.unit,
-            "codes":this.codes,
-            "direct_transition":this.name
+            "codes":this.codes
+
         }
     }
 }
@@ -268,11 +260,10 @@ class MultiObservationState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "category":this.category,
             "number_of_observations":this.number_of_observations,
-            "codes":this.codes,
-            "direct_transition":this.name
+            "codes":this.codes
         }
     }
 }
@@ -285,10 +276,10 @@ class DiagnosticReportState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "number_of_observations":this.number_of_observations,
-            "codes":this.codes,
-            "direct_transition":this.name
+            "codes":this.codes
+            
         }
     }
 }
@@ -302,11 +293,10 @@ class SymptomState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
+            ...super.toJSON(),
             "symptom":this.symptom,
             "cause":this.cause,
-            "probability":this.probability,
-            "direct_transition":this.name
+            "probability":this.probability
         }
     }
 }
@@ -317,8 +307,7 @@ class DeathState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -329,18 +318,17 @@ class TerminalState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
 
 module.exports = {
     InitialState, EncounterState, EncounterEndState,
-    ConditionOnsetState, ConditionEndState, AlleryOnsetState,
+    ConditionOnsetState, ConditionEndState, AllergyOnsetState,
     AllergyEndState, MedicationOrderState, MedicationEndState,
     CarePlanStartState, CarePlanEndState, ProcedureState,
     ImagingStudyState, DeviceState, DeviceEndState,
     SupplyListState, VitalSignState, ObservationState, MultiObservationState,
-    DiagnosticReportState, SymptomState, DeathState, TerminalState
+    DiagnosticReportState, SymptomState, DeathState, TerminalState, 
 }
