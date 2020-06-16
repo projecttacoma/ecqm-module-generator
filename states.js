@@ -17,8 +17,7 @@ class InitialState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
-            "direct_transition": this.name
+            ...super.toJSON()
         }
     }
 }
@@ -44,8 +43,7 @@ class EncounterEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type": this.type,
-            "direct_transition": this.name
+            ...super.toJSON()
         }
     }
 }
@@ -71,8 +69,7 @@ class ConditionEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -98,8 +95,7 @@ class AllergyEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -123,8 +119,7 @@ class MedicationEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -148,8 +143,7 @@ class CarePlanEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -204,8 +198,7 @@ class DeviceEndState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -314,8 +307,7 @@ class DeathState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
@@ -326,8 +318,7 @@ class TerminalState extends BaseState {
     }
     toJSON() {
         return {
-            "type":this.type,
-            "direct_transition":this.name
+            ...super.toJSON()
         }
     }
 }
