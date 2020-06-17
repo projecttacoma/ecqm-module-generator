@@ -14,4 +14,5 @@ const STATE_LOOKUP={
     [`${prefix}Observation`]:classes.ObservationState,
     [`${prefix}DiagnosticReport`]:classes.DiagnosticReportState
 };
+
 module.exports = STATE_LOOKUP;
