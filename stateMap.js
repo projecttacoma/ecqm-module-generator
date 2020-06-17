@@ -16,4 +16,3 @@ const STATE_LOOKUP = {
 };
 
 module.exports = STATE_LOOKUP;
-
