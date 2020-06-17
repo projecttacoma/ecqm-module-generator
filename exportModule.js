@@ -26,5 +26,4 @@ function exportModule(data) {
     })
     return moduleJSON
 }
-//console.log(JSON.stringify(exportModule(data)));
 module.exports = exportModule;
