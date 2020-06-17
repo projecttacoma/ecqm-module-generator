@@ -3,17 +3,10 @@ class BaseState {
         this.name = name;
         this.remarks = [];
     }
-<<<<<<< Updated upstream
     toJSON(){
         return{
         "type":this.type,
         "direct_transition":this.name
-=======
-    toJSON() {
-        return {
-            "type": this.type,
-            "direct_transition": this.name
->>>>>>> Stashed changes
         }
     }
 }
@@ -21,11 +14,6 @@ class InitialState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'Initial';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class EncounterState extends BaseState {
@@ -38,13 +26,8 @@ class EncounterState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "codes":this.codes,
             "encounter_class":this.encounter_class
-=======
-            "codes": this.codes,
-            "encounter_class": this.encounter_class
->>>>>>> Stashed changes
         };
     }
 }
@@ -52,11 +35,6 @@ class EncounterEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'EncounterEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class ConditionOnsetState extends BaseState {
@@ -69,13 +47,8 @@ class ConditionOnsetState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "target_encounter":this.target_encounter,
             "codes":this.codes
-=======
-            "target_encounter": this.target_encounter,
-            "codes": this.codes
->>>>>>> Stashed changes
         }
     }
 }
@@ -83,11 +56,6 @@ class ConditionEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'ConditionEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class AllergyOnsetState extends BaseState {
@@ -100,13 +68,8 @@ class AllergyOnsetState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "target_encounter":this.target_encounter,
             "codes":this.codes
-=======
-            "target_encounter": this.target_encounter,
-            "codes": this.codes,
->>>>>>> Stashed changes
         }
     }
 }
@@ -114,11 +77,6 @@ class AllergyEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'AllergyEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class MedicationOrderState extends BaseState {
@@ -130,11 +88,7 @@ class MedicationOrderState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "codes":this.codes
-=======
-            "codes": this.codes
->>>>>>> Stashed changes
         }
     }
 }
@@ -142,11 +96,6 @@ class MedicationEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'MedicationEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class CarePlanStartState extends BaseState {
@@ -158,11 +107,7 @@ class CarePlanStartState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "codes":this.codes
-=======
-            "codes": this.codes
->>>>>>> Stashed changes
         }
     }
 }
@@ -170,11 +115,6 @@ class CarePlanEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'CarePlanEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class ProcedureState extends BaseState {
@@ -188,11 +128,7 @@ class ProcedureState extends BaseState {
         return {
             ...super.toJSON(),
             "codes": this.codes,
-<<<<<<< Updated upstream
             "duration": this.duration
-=======
-            "duration": this.duration,
->>>>>>> Stashed changes
         }
     }
 }
@@ -206,13 +142,8 @@ class ImagingStudyState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "procedure_code":this.procedure_code,
             "series":this.series
-=======
-            "procedure_code": this.procedure_code,
-            "series": this.series,
->>>>>>> Stashed changes
 
         }
     }
@@ -226,11 +157,7 @@ class DeviceState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "code":this.code
-=======
-            "code": this.code
->>>>>>> Stashed changes
         }
     }
 }
@@ -238,11 +165,6 @@ class DeviceEndState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'DeviceEnd';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 class SupplyListState extends BaseState {
@@ -254,13 +176,8 @@ class SupplyListState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "supplies":this.supplies
  
-=======
-            "supplies": this.supplies
-
->>>>>>> Stashed changes
         }
     }
 }
@@ -274,13 +191,8 @@ class VitalSignState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "vital_sign":this.vital_sign,
             "unit":this.unit
-=======
-            "vital_sign": this.vital_sign,
-            "unit": this.unit
->>>>>>> Stashed changes
 
         }
     }
@@ -296,15 +208,9 @@ class ObservationState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "category":this.category,
             "unit":this.unit,
             "codes":this.codes
-=======
-            "category": this.category,
-            "unit": this.unit,
-            "codes": this.codes
->>>>>>> Stashed changes
 
         }
     }
@@ -320,37 +226,18 @@ class MultiObservationState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "category":this.category,
             "number_of_observations":this.number_of_observations,
             "codes":this.codes
-=======
-            "category": this.category,
-            "number_of_observations": this.number_of_observations,
-            "codes": this.codes
->>>>>>> Stashed changes
         }
     }
 }
 class DiagnosticReportState extends BaseState {
     constructor(name, number_of_observations, codes) {
         super(name);
-        this.type = 'DiagnosticReport',
-<<<<<<< Updated upstream
-        this.number_of_observations = number_of_observations,
+        this.type = 'DiagnosticReport';
+        this.number_of_observations = number_of_observations;
         this.codes = codes;
-=======
-            this.number_of_observations = number_of_observations,
-            this.codes = codes;
-    }
-    toJSON() {
-        return {
-            ...super.toJSON(),
-            "number_of_observations": this.number_of_observations,
-            "codes": this.codes
-
-        }
->>>>>>> Stashed changes
     }
     toJSON() {
         return {
@@ -372,15 +259,9 @@ class SymptomState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
-<<<<<<< Updated upstream
             "symptom":this.symptom,
             "cause":this.cause,
             "probability":this.probability
-=======
-            "symptom": this.symptom,
-            "cause": this.cause,
-            "probability": this.probability
->>>>>>> Stashed changes
         }
     }
 }
@@ -389,21 +270,11 @@ class DeathState extends BaseState {
         super(name);
         this.type = 'Death';
     }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
-    }
 }
 class TerminalState extends BaseState {
     constructor(name) {
         super(name);
         this.type = 'Terminal';
-    }
-    toJSON() {
-        return {
-            ...super.toJSON()
-        }
     }
 }
 
@@ -414,9 +285,5 @@ module.exports = {
     CarePlanStartState, CarePlanEndState, ProcedureState,
     ImagingStudyState, DeviceState, DeviceEndState,
     SupplyListState, VitalSignState, ObservationState, MultiObservationState,
-<<<<<<< Updated upstream
     DiagnosticReportState, SymptomState, DeathState, TerminalState, 
-=======
-    DiagnosticReportState, SymptomState, DeathState, TerminalState,
->>>>>>> Stashed changes
 }
