@@ -3,10 +3,17 @@ class BaseState {
         this.name = name;
         this.remarks = [];
     }
+<<<<<<< Updated upstream
     toJSON(){
         return{
         "type":this.type,
         "direct_transition":this.name
+=======
+    toJSON() {
+        return {
+            "type": this.type,
+            "direct_transition": this.name
+>>>>>>> Stashed changes
         }
     }
 }
@@ -31,8 +38,13 @@ class EncounterState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "codes":this.codes,
             "encounter_class":this.encounter_class
+=======
+            "codes": this.codes,
+            "encounter_class": this.encounter_class
+>>>>>>> Stashed changes
         };
     }
 }
@@ -57,8 +69,13 @@ class ConditionOnsetState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "target_encounter":this.target_encounter,
             "codes":this.codes
+=======
+            "target_encounter": this.target_encounter,
+            "codes": this.codes
+>>>>>>> Stashed changes
         }
     }
 }
@@ -83,8 +100,13 @@ class AllergyOnsetState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "target_encounter":this.target_encounter,
             "codes":this.codes
+=======
+            "target_encounter": this.target_encounter,
+            "codes": this.codes,
+>>>>>>> Stashed changes
         }
     }
 }
@@ -108,7 +130,11 @@ class MedicationOrderState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "codes":this.codes
+=======
+            "codes": this.codes
+>>>>>>> Stashed changes
         }
     }
 }
@@ -132,7 +158,11 @@ class CarePlanStartState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "codes":this.codes
+=======
+            "codes": this.codes
+>>>>>>> Stashed changes
         }
     }
 }
@@ -158,7 +188,11 @@ class ProcedureState extends BaseState {
         return {
             ...super.toJSON(),
             "codes": this.codes,
+<<<<<<< Updated upstream
             "duration": this.duration
+=======
+            "duration": this.duration,
+>>>>>>> Stashed changes
         }
     }
 }
@@ -172,8 +206,13 @@ class ImagingStudyState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "procedure_code":this.procedure_code,
             "series":this.series
+=======
+            "procedure_code": this.procedure_code,
+            "series": this.series,
+>>>>>>> Stashed changes
 
         }
     }
@@ -187,7 +226,11 @@ class DeviceState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "code":this.code
+=======
+            "code": this.code
+>>>>>>> Stashed changes
         }
     }
 }
@@ -211,8 +254,13 @@ class SupplyListState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "supplies":this.supplies
  
+=======
+            "supplies": this.supplies
+
+>>>>>>> Stashed changes
         }
     }
 }
@@ -226,8 +274,13 @@ class VitalSignState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "vital_sign":this.vital_sign,
             "unit":this.unit
+=======
+            "vital_sign": this.vital_sign,
+            "unit": this.unit
+>>>>>>> Stashed changes
 
         }
     }
@@ -243,9 +296,15 @@ class ObservationState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "category":this.category,
             "unit":this.unit,
             "codes":this.codes
+=======
+            "category": this.category,
+            "unit": this.unit,
+            "codes": this.codes
+>>>>>>> Stashed changes
 
         }
     }
@@ -261,9 +320,15 @@ class MultiObservationState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "category":this.category,
             "number_of_observations":this.number_of_observations,
             "codes":this.codes
+=======
+            "category": this.category,
+            "number_of_observations": this.number_of_observations,
+            "codes": this.codes
+>>>>>>> Stashed changes
         }
     }
 }
@@ -271,8 +336,21 @@ class DiagnosticReportState extends BaseState {
     constructor(name, number_of_observations, codes) {
         super(name);
         this.type = 'DiagnosticReport',
+<<<<<<< Updated upstream
         this.number_of_observations = number_of_observations,
         this.codes = codes;
+=======
+            this.number_of_observations = number_of_observations,
+            this.codes = codes;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "number_of_observations": this.number_of_observations,
+            "codes": this.codes
+
+        }
+>>>>>>> Stashed changes
     }
     toJSON() {
         return {
@@ -294,9 +372,15 @@ class SymptomState extends BaseState {
     toJSON() {
         return {
             ...super.toJSON(),
+<<<<<<< Updated upstream
             "symptom":this.symptom,
             "cause":this.cause,
             "probability":this.probability
+=======
+            "symptom": this.symptom,
+            "cause": this.cause,
+            "probability": this.probability
+>>>>>>> Stashed changes
         }
     }
 }
@@ -330,5 +414,9 @@ module.exports = {
     CarePlanStartState, CarePlanEndState, ProcedureState,
     ImagingStudyState, DeviceState, DeviceEndState,
     SupplyListState, VitalSignState, ObservationState, MultiObservationState,
+<<<<<<< Updated upstream
     DiagnosticReportState, SymptomState, DeathState, TerminalState, 
+=======
+    DiagnosticReportState, SymptomState, DeathState, TerminalState,
+>>>>>>> Stashed changes
 }
