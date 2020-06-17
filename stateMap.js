@@ -1,4 +1,5 @@
 const classes = require('./states.js');
+const exportModule = require('./exportModule.js');
 const prefix = '{http://hl7.org/fhir}';
 const STATE_LOOKUP={
     [`${prefix}Encounter`]:classes.EncounterState,
@@ -13,3 +14,4 @@ const STATE_LOOKUP={
     [`${prefix}Observation`]:classes.ObservationState,
     [`${prefix}DiagnosticReport`]:classes.DiagnosticReportState
 };
+module.exports = STATE_LOOKUP;
