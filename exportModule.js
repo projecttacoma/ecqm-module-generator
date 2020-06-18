@@ -20,10 +20,11 @@ function exportModule(data) {
             moduleJSON.states[stateName] = state.toJSON();
         }
         catch{
+            console.log('no corresponding state for that data type');
             return;
         }
     })
     return moduleJSON
 }
-console.log(JSON.stringify(exportModule(data)));
+//console.log(JSON.stringify(exportModule(data)));
 module.exports = exportModule;
