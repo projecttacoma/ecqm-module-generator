@@ -3,6 +3,12 @@ class BaseState {
         this.name = name;
         this.remarks = [];
     }
+    toJSON(){
+        return{
+        "type":this.type,
+        "direct_transition":this.name
+        }
+    }
 }
 class InitialState extends BaseState {
     constructor(name) {
@@ -16,6 +22,13 @@ class EncounterState extends BaseState {
         this.type = 'Encounter';
         this.encounter_class = encounter_class;
         this.codes = codes;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "codes":this.codes,
+            "encounter_class":this.encounter_class
+        };
     }
 }
 class EncounterEndState extends BaseState {
@@ -31,6 +44,13 @@ class ConditionOnsetState extends BaseState {
         this.target_encounter = target_encounter;
         this.codes = codes;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "target_encounter":this.target_encounter,
+            "codes":this.codes
+        }
+    }
 }
 class ConditionEndState extends BaseState {
     constructor(name) {
@@ -38,12 +58,19 @@ class ConditionEndState extends BaseState {
         this.type = 'ConditionEnd';
     }
 }
-class AlleryOnsetState extends BaseState {
+class AllergyOnsetState extends BaseState {
     constructor(name, target_encounter, codes) {
         super(name);
         this.type = 'AllergyOnset';
         this.target_encounter = target_encounter;
         this.codes = codes;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "target_encounter":this.target_encounter,
+            "codes":this.codes
+        }
     }
 }
 class AllergyEndState extends BaseState {
@@ -58,6 +85,12 @@ class MedicationOrderState extends BaseState {
         this.type = 'MedicationOrder';
         this.codes = codes;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "codes":this.codes
+        }
+    }
 }
 class MedicationEndState extends BaseState {
     constructor(name) {
@@ -71,6 +104,12 @@ class CarePlanStartState extends BaseState {
         this.type = 'CarePlanStart';
         this.codes = codes;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "codes":this.codes
+        }
+    }
 }
 class CarePlanEndState extends BaseState {
     constructor(name) {
@@ -79,13 +118,18 @@ class CarePlanEndState extends BaseState {
     }
 }
 class ProcedureState extends BaseState {
-    constructor(name, codes, duration, unit) {
+    constructor(name, codes, duration) {
         super(name);
         this.type = 'Procedure';
         this.codes = codes;
-        //these are in a object 'duration'
         this.duration = duration;
-        this.unit=unit;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "codes": this.codes,
+            "duration": this.duration
+        }
     }
 }
 class ImagingStudyState extends BaseState {
@@ -95,12 +139,26 @@ class ImagingStudyState extends BaseState {
         this.procedure_code = procedure_code;
         this.series = series;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "procedure_code":this.procedure_code,
+            "series":this.series
+
+        }
+    }
 }
 class DeviceState extends BaseState {
     constructor(name, code) {
         super(name);
         this.type = 'Device';
         this.code = code;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "code":this.code
+        }
     }
 }
 class DeviceEndState extends BaseState {
@@ -115,6 +173,13 @@ class SupplyListState extends BaseState {
         this.type = 'SupplyList';
         this.supplies = supplies;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "supplies":this.supplies
+ 
+        }
+    }
 }
 class VitalSignState extends BaseState {
     constructor(name, vital_sign, unit) {
@@ -122,6 +187,14 @@ class VitalSignState extends BaseState {
         this.type = 'VitalSign';
         this.vital_sign = vital_sign;
         this.unit = unit;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "vital_sign":this.vital_sign,
+            "unit":this.unit
+
+        }
     }
 }
 class ObservationState extends BaseState {
@@ -132,6 +205,15 @@ class ObservationState extends BaseState {
         this.unit = unit;
         this.codes = codes;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "category":this.category,
+            "unit":this.unit,
+            "codes":this.codes
+
+        }
+    }
 }
 class MultiObservationState extends BaseState {
     constructor(name, category, number_of_observations, codes) {
@@ -141,6 +223,14 @@ class MultiObservationState extends BaseState {
         this.number_of_observations = number_of_observations;
         this.codes = codes;
     }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "category":this.category,
+            "number_of_observations":this.number_of_observations,
+            "codes":this.codes
+        }
+    }
 }
 class DiagnosticReportState extends BaseState {
     constructor(name, number_of_observations, codes) {
@@ -148,6 +238,14 @@ class DiagnosticReportState extends BaseState {
         this.type = 'DiagnosticReport';
         this.number_of_observations = number_of_observations;
         this.codes = codes;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "number_of_observations":this.number_of_observations,
+            "codes":this.codes
+            
+        }
     }
 }
 class SymptomState extends BaseState {
@@ -157,6 +255,14 @@ class SymptomState extends BaseState {
         this.symptom = symptom;
         this.cause = cause;
         this.probability = probability;
+    }
+    toJSON() {
+        return {
+            ...super.toJSON(),
+            "symptom":this.symptom,
+            "cause":this.cause,
+            "probability":this.probability
+        }
     }
 }
 class DeathState extends BaseState {
@@ -174,10 +280,10 @@ class TerminalState extends BaseState {
 
 module.exports = {
     InitialState, EncounterState, EncounterEndState,
-    ConditionOnsetState, ConditionEndState, AlleryOnsetState,
+    ConditionOnsetState, ConditionEndState, AllergyOnsetState,
     AllergyEndState, MedicationOrderState, MedicationEndState,
     CarePlanStartState, CarePlanEndState, ProcedureState,
     ImagingStudyState, DeviceState, DeviceEndState,
     SupplyListState, VitalSignState, ObservationState, MultiObservationState,
-    DiagnosticReportState, SymptomState, DeathState, TerminalState
+    DiagnosticReportState, SymptomState, DeathState, TerminalState, 
 }
