@@ -46,23 +46,25 @@
                    "type" : "Retrieve"
                 }
              }
-          }, {
-             "name" : "Initial Population",
-             "context" : "Patient",
-             "accessLevel" : "Public",
-             "expression" : {
-                "type" : "Exists",
-                "operand" : {
-                   "dataType" : "{http://hl7.org/fhir}Procedure",
-                   "codeProperty" : "code",
-                   "type" : "Retrieve",
-                   "codes" : {
-                      "name" : "Colonoscopy",
-                      "type" : "ValueSetRef"
-                   }
-                }
-             }
-          }, {
+          }, 
+         {
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "expression" : {
+               "type" : "Exists",
+               "operand" : {
+                  "dataType" : "{http://hl7.org/fhir}Procedure",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Colonoscopy",
+                     "type" : "ValueSetRef"
+                  }
+               }
+            }
+         }, 
+         {
              "name" : "Denominator",
              "context" : "Patient",
              "accessLevel" : "Public",

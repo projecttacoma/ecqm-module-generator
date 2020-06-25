@@ -1,30 +1,28 @@
+const fs = require('fs');
 const data = require('./response.json');
 const loadData = require('./GetDataType.js');
 const states = require('./states.js');
-const stateLookup = require('./stateMap.js');
-function exportModule(data) {
-    const dataTypes = loadData();
-    const moduleJSON = {
-        "name": data.library.identifier.id,
-        "remarks": [],
-        "states": {
-            "Initial": new states.InitialState('Initial').toJSON(),
-            "Terminal": new states.TerminalState().toJSON()
-        }
-    };
-    dataTypes.forEach(function (temp, i) {
-        try {
-            const map = stateLookup[temp];
-            const stateName = `${temp.substring(21)}_${i}`;
-            const state = new map(stateName, [], {})
-            moduleJSON.states[stateName] = state.toJSON();
-        }
-        catch{
-            console.log('no corresponding state for that data type');
-            return;
-        }
-    })
-    return moduleJSON
+const factory = require('./factory.js');
+
+function exportModule() {
+  const dataTypes = loadData();
+  const moduleJSON = {
+    name: data.library.identifier.id,
+    remarks: [],
+    states: {
+      Initial: new states.InitialState('Initial').toJSON(),
+      Terminal: new states.TerminalState('Terminal').toJSON(),
+    },
+  };
+  dataTypes.forEach((temp, i) => {
+    const stateName = `${temp.substring(21)}_${i}`;
+    const StateClass = factory(temp);
+    if (StateClass !== null) {
+      moduleJSON.states[stateName] = factory(temp).toJSON();
+    }
+  });
+  return JSON.stringify(moduleJSON);
 }
-//console.log(JSON.stringify(exportModule(data)));
+
+fs.writeFileSync(`${data.library.identifier.id}.json`, exportModule(data));
 module.exports = exportModule;

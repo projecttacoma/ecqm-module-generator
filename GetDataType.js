@@ -1,17 +1,15 @@
 const data = require('./response.json');
+
 const dataTypes = [];
-function loadData(e) {
+function loadData() {
   const deff = data.library.statements.def;
-  const filtered = deff.filter(defined);
-  for (let i = 0; i < filtered.length; i++) {
+  const filtered = deff.filter((d) => {
+    return d.expression.operand !== undefined;
+  });
+  for (let i = 0; i < filtered.length; i += 1) {
     dataTypes.push(filtered[i].expression.operand.dataType);
   }
-  function defined(set) {
-    for (let j = 0; j < deff.length; j++) {
-      if (set.expression.operand !== undefined) return set;
-    }
-  }
+
   return dataTypes;
 }
-
 module.exports = loadData;
