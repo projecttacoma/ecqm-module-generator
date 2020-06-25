@@ -15,12 +15,11 @@ function exportModule() {
     },
   };
   dataTypes.forEach((temp, i) => {
-    try {
-      const stateName = `${temp.substring(21)}_${i}`;
-      moduleJSON.states[stateName] = factory(temp).toJSON();
-    } catch {
-      return;
-    }
+  const stateName = `${temp.substring(21)}_${i}`;
+  const StateClass = factory(temp);
+  if (StateClass !== null) {
+    moduleJSON.states[stateName] = factory(temp).toJSON();
+  }
   });
   return JSON.stringify(moduleJSON);
 }
