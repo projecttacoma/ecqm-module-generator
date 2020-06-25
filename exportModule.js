@@ -11,7 +11,7 @@ function exportModule() {
     remarks: [],
     states: {
       Initial: new states.InitialState('Initial').toJSON(),
-      Terminal: new states.TerminalState().toJSON(),
+      Terminal: new states.TerminalState('Terminal').toJSON(),
     },
   };
   dataTypes.forEach((temp, i) => {
