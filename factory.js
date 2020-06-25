@@ -42,4 +42,4 @@ function factory(input) {
   }
   return newState;
 }
-module.exports.factory = factory;
+module.exports = factory;
