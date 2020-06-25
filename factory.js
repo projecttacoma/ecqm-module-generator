@@ -1,43 +1,45 @@
 const states = require('./states.js');
+
 function factory(input) {
-    let newState;
-    switch (input) {
-        case '{http://hl7.org/fhir}Encounter':
-            newState = new states.EncounterState('name', 'encounter_class', ['codes']);
-            break;
-            case '{http://hl7.org/fhir}Condition':
-                newState = new states.ConditionOnsetState('name', 'target_encounter', ['codes']);
-                break;
-            case '{http://hl7.org/fhir}AllergyIntolerance':
-                newState = new states.AllergyOnsetState('name', 'target_encounter', ['codes']);
-                break;
-            case '{http://hl7.org/fhir}MedicationOrder':
-                newState = new states.MedicationOrderState('name',['codes']);
-                break;
-            case '{http://hl7.org/fhir}CarePlan':
-                newState = new states.CarePlanStartState('name',['codes']);
-                break;
-            case '{http://hl7.org/fhir}Procedure':
-                newState = new states.ProcedureState('name',['codes'],'duration');
-                break;
-            case '{http://hl7.org/fhir}ImagingStudy':
-                newState = new states.ImagingStudyState('name', 'procedure_code', 'series');
-                break;
-            case '{http://hl7.org/fhir}Device':
-                newState = new states.DeviceState('name','code');
-                break;
-            case '{http://hl7.org/fhir}SupplyDelivery':
-                newState = new states.SupplyListState('name','supplies');
-                break;
-            case '{http://hl7.org/fhir}Observation':
-                newState = new states.ObservationState('name', 'category', 'unit', ['codes']);
-                break;
-            case '{http://hl7.org/fhir}DiagnosticReport':
-                newState = new states.DiagnosticReportState('name', 'number_of_observations', ['codes']);
-                break;
-            default:
-                newState = 'no corresponding state for that datatype'
-    }
-    return newState;
+  let newState;
+  switch (input) {
+    case '{http://hl7.org/fhir}Encounter':
+      newState = new states.EncounterState('Encounter', 'encounter_class', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}Condition':
+      newState = new states.ConditionOnsetState('Condition', 'target_encounter', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}AllergyIntolerance':
+      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}Medication':
+      newState = new states.MedicationOrderState('Medication', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}CarePlan':
+      newState = new states.CarePlanStartState('CarePlan', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}Procedure':
+      newState = new states.ProcedureState('Procedure', ['codes'], 'duration');
+      break;
+    case '{http://hl7.org/fhir}ImagingStudy':
+      newState = new states.ImagingStudyState('ImagingStudy', 'procedure_code', ['series']);
+      break;
+    case '{http://hl7.org/fhir}Device':
+      newState = new states.DeviceState('Device', 'code');
+      break;
+    case '{http://hl7.org/fhir}SupplyDelivery':
+      newState = new states.SupplyListState('SupplyDelivery', 'supplies');
+      break;
+    case '{http://hl7.org/fhir}Observation':
+      newState = new states.ObservationState('Observation', 'category', 'unit', ['codes']);
+      break;
+    case '{http://hl7.org/fhir}DiagnosticReport':
+      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', ['codes']);
+      break;
+    default:
+      newState = 'no corresponding state for that datatype';
+      break;
+  }
+  return newState;
 }
-module.exports = factory;
+module.exports.factory = factory;
