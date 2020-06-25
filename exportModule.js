@@ -14,7 +14,7 @@ function exportModule() {
       Terminal: new states.TerminalState().toJSON(),
     },
   };
-  dataTypes.forEach(function (temp, i) {
+  dataTypes.forEach((temp, i) => {
     try {
       const stateName = `${temp.substring(21)}_${i}`;
       moduleJSON.states[stateName] = factory(temp).toJSON();
