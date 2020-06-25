@@ -1,11 +1,9 @@
-const fs = require('fs');
-const data = require('./response.json');
 const loadData = require('./GetDataType.js');
 const states = require('./states.js');
 const factory = require('./factory.js');
 
-function exportModule() {
-  const dataTypes = loadData();
+function exportModule(data) {
+  const dataTypes = loadData(data);
   const moduleJSON = {
     name: data.library.identifier.id,
     remarks: [],
@@ -21,8 +19,6 @@ function exportModule() {
       moduleJSON.states[stateName] = factory(temp).toJSON();
     }
   });
-  return JSON.stringify(moduleJSON);
+  return moduleJSON;
 }
-
-fs.writeFileSync(`${data.library.identifier.id}.json`, exportModule(data));
 module.exports = exportModule;
