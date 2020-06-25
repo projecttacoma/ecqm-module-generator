@@ -19,7 +19,7 @@ function factory(input) {
       newState = new states.CarePlanStartState('CarePlan', ['codes']);
       break;
     case '{http://hl7.org/fhir}Procedure':
-      newState = new states.ProcedureState('Procedure', ['codes'], 'duration');
+      newState = new states.ProcedureState('Procedure', ['codes']);
       break;
     case '{http://hl7.org/fhir}ImagingStudy':
       newState = new states.ImagingStudyState('ImagingStudy', 'procedure_code', ['series']);
