@@ -129,7 +129,6 @@ class ProcedureState extends BaseState {
     super(name);
     this.type = 'Procedure';
     this.codes = codes;
-    this.duration = duration;
   }
 
   toJSON() {
