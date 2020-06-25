@@ -37,7 +37,7 @@ function factory(input) {
       newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', ['codes']);
       break;
     default:
-      newState = 'no corresponding state for that datatype';
+      newState = null;
       break;
   }
   return newState;
