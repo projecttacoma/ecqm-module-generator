@@ -125,7 +125,7 @@ class CarePlanEndState extends BaseState {
   }
 }
 class ProcedureState extends BaseState {
-  constructor(name, codes, duration) {
+  constructor(name, codes, duration = undefined) {
     super(name);
     this.type = 'Procedure';
     this.codes = codes;
