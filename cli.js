@@ -5,9 +5,13 @@ const exportModule = require('./exportModule.js');
 const program = new Command();
 program.version('0.0.1');
 function data() {
-  program.option('--elmJSON <file>', 'elm json to turn to synthea module').parse(process.argv);
-  const contents = JSON.parse(fs.readFileSync(program.elmJSON, 'utf8'));
-  return contents;
+  program.requiredOption('--elmJSON <file>', 'elm json to turn to synthea module').parse(process.argv);
+  try {
+    const contents = JSON.parse(fs.readFileSync(program.elmJSON, 'utf8'));
+    return contents;
+  } catch {
+    process.exit(1);
+  }
 }
 
 const moduleJSON = exportModule(data());
