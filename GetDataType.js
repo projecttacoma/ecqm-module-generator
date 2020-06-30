@@ -1,7 +1,5 @@
-const data = require('./response.json');
-
 const dataTypes = [];
-function loadData() {
+function loadData(data) {
   const deff = data.library.statements.def;
   const filtered = deff.filter((d) => {
     return d.expression.operand !== undefined;
