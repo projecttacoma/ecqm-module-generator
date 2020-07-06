@@ -1,6 +1,7 @@
 function loadData(data) {
   const dataTypes = [];
   const deff = data.library.statements.def;
+
   const filtered = deff.filter((d) => {
     return d.expression.operand !== undefined;
   });
@@ -21,8 +22,9 @@ function loadData(data) {
       dataTypes.push(section.dataType);
     } else {
       section.forEach((o) => {
-        if (traverseELM(o.operand) !== undefined) {
-          dataTypes.push(traverseELM(o.operand));
+        const returnResult = traverseELM(o.operand);
+        if (returnResult !== undefined) {
+          dataTypes.push(returnResult);
         }
       });
     }
