@@ -4,11 +4,11 @@ function loadData(data) {
   const filtered = deff.filter((d) => {
     return d.expression.operand !== undefined;
   });
-  function recursion(array) {
+  function traverseELM(array) {
     if (array.operand === undefined) {
       for (let h = 0; h < array.length; h += 1) {
         if (array[h].operand.dataType === undefined) {
-          recursion(array[h].operand);
+          traverseELM(array[h].operand);
         } else dataTypes.push(array[h].operand.dataType);
       }
     }
@@ -21,8 +21,8 @@ function loadData(data) {
       dataTypes.push(section.dataType);
     } else {
       section.forEach((o) => {
-        if (recursion(o.operand) !== undefined) {
-          dataTypes.push(recursion(o.operand));
+        if (traverseELM(o.operand) !== undefined) {
+          dataTypes.push(traverseELM(o.operand));
         }
       });
     }
