@@ -45,7 +45,7 @@ const results3 = [
     dataType: '{http://hl7.org/fhir}Encounter',
     codeProperty: 'type',
     type: 'Retrieve',
-    codes: { name: 'Colonoscopy', type: 'ValueSetRef' }
+    codes: { name: 'Office Visit', type: 'ValueSetRef' }
   },
   {
     dataType: '{http://hl7.org/fhir}Medication',
