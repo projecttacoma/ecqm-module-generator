@@ -1,19 +1,27 @@
 const states = require('./states.js');
 
-function factory(dataType,link) {
+function factory(dataType, link) {
   let newState;
   switch (dataType) {
     case '{http://hl7.org/fhir}Encounter':
-      newState = new states.EncounterState('Encounter', 'encounter_class', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.EncounterState('Encounter', 'encounter_class', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     case '{http://hl7.org/fhir}Condition':
-      newState = new states.ConditionOnsetState('Condition', 'target_encounter', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.ConditionOnsetState('Condition', 'target_encounter', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     case '{http://hl7.org/fhir}AllergyIntolerance':
-      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     case '{http://hl7.org/fhir}Medication':
-      newState = new states.MedicationOrderState('Medication', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.MedicationOrderState('Medication', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     case '{http://hl7.org/fhir}CarePlan':
       newState = new states.CarePlanStartState('CarePlan', [{ code: '', system: '', display: '', value_set: link }]);
@@ -31,10 +39,14 @@ function factory(dataType,link) {
       newState = new states.SupplyListState('SupplyDelivery', 'supplies');
       break;
     case '{http://hl7.org/fhir}Observation':
-      newState = new states.ObservationState('Observation', 'category', 'unit', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.ObservationState('Observation', 'category', 'unit', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     case '{http://hl7.org/fhir}DiagnosticReport':
-      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', [{ code: '', system: '', display: '', value_set: link }]);
+      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', [
+        { code: '', system: '', display: '', value_set: link },
+      ]);
       break;
     default:
       newState = null;

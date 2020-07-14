@@ -16,9 +16,9 @@ function exportModule(data) {
     },
   };
   dataTypes.forEach((object, i) => {
-    if (object.dataType !== null&&object.codes !== undefined && object.type === 'Retrieve') {
+    if (object.dataType !== null && object.codes !== undefined && object.type === 'Retrieve') {
       const link = valueSets[object.codes.name];
-      const StateClass = factory(object.dataType,link);
+      const StateClass = factory(object.dataType, link);
       const stateName = `${object.dataType.substring(21)}_${i}`;
       logger.info(`adding state of type: ${StateClass.name}`);
       logger.info(`adding value_set with id of: ${link}`);
