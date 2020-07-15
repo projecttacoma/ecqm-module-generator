@@ -16,12 +16,18 @@ function exportModule(data) {
     },
   };
   dataTypes.forEach((object, i) => {
-    if (object.dataType !== null && object.codes !== undefined && object.type === 'Retrieve') {
-      const link = valueSets[object.codes.name];
-      const StateClass = factory(object.dataType, link);
+    if (object.dataType !== null && factory(object.dataType) !== null) {
+      let StateClass;
+      if (object.codes !== undefined && object.type === 'Retrieve') {
+        logger.info(`adding value_set with id of: ${valueSets[object.codes.name]}`);
+        logger.info(`adding state of type: ${object.dataType}`);
+        StateClass = factory(object.dataType, valueSets[object.codes.name]);
+      } else {
+        logger.info(`adding state of type: ${object.dataType}`);
+        StateClass = factory(object.dataType);
+      }
       const stateName = `${object.dataType.substring(21)}_${i}`;
-      logger.info(`adding state of type: ${StateClass.name}`);
-      logger.info(`adding value_set with id of: ${link}`);
+
       moduleJSON.states[stateName] = StateClass.toJSON();
     }
   });
