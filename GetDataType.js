@@ -1,7 +1,6 @@
 function loadData(data) {
   const dataTypes = [];
   const deff = data.library.statements.def;
-
   const filtered = deff.filter((d) => {
     return d.expression.operand !== undefined;
   });
@@ -10,20 +9,20 @@ function loadData(data) {
       for (let h = 0; h < array.length; h += 1) {
         if (array[h].operand.dataType === undefined) {
           traverseELM(array[h].operand);
-        } else dataTypes.push(array[h].operand.dataType);
+        } else dataTypes.push(array[h].operand);
       }
     }
-    return array.dataType;
+    return array;
   }
   let section;
   for (let i = 0; i < filtered.length; i += 1) {
     section = filtered[i].expression.operand;
     if (section.dataType !== undefined) {
-      dataTypes.push(section.dataType);
+      dataTypes.push(section);
     } else {
       section.forEach((o) => {
         const returnResult = traverseELM(o.operand);
-        if (returnResult !== undefined) {
+        if (returnResult.dataType !== undefined) {
           dataTypes.push(returnResult);
         }
       });

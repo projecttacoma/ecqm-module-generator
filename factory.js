@@ -1,25 +1,31 @@
 const states = require('./states.js');
 
-function factory(input) {
+function factory(dataType, link = null) {
   let newState;
-  switch (input) {
+  let codes;
+  if (link != null) {
+    codes = [{ code: '', system: '', display: '', value_set: link }];
+  } else {
+    codes = [];
+  }
+  switch (dataType) {
     case '{http://hl7.org/fhir}Encounter':
-      newState = new states.EncounterState('Encounter', 'encounter_class', []);
+      newState = new states.EncounterState('Encounter', 'encounter_class', codes);
       break;
     case '{http://hl7.org/fhir}Condition':
-      newState = new states.ConditionOnsetState('Condition', 'target_encounter', []);
+      newState = new states.ConditionOnsetState('Condition', 'target_encounter', codes);
       break;
     case '{http://hl7.org/fhir}AllergyIntolerance':
-      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', []);
+      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', codes);
       break;
     case '{http://hl7.org/fhir}Medication':
-      newState = new states.MedicationOrderState('Medication', []);
+      newState = new states.MedicationOrderState('Medication', codes);
       break;
     case '{http://hl7.org/fhir}CarePlan':
-      newState = new states.CarePlanStartState('CarePlan', []);
+      newState = new states.CarePlanStartState('CarePlan', codes);
       break;
     case '{http://hl7.org/fhir}Procedure':
-      newState = new states.ProcedureState('Procedure', []);
+      newState = new states.ProcedureState('Procedure', codes);
       break;
     case '{http://hl7.org/fhir}ImagingStudy':
       newState = new states.ImagingStudyState('ImagingStudy', 'procedure_code', []);
@@ -31,10 +37,10 @@ function factory(input) {
       newState = new states.SupplyListState('SupplyDelivery', 'supplies');
       break;
     case '{http://hl7.org/fhir}Observation':
-      newState = new states.ObservationState('Observation', 'category', 'unit', []);
+      newState = new states.ObservationState('Observation', 'category', 'unit', codes);
       break;
     case '{http://hl7.org/fhir}DiagnosticReport':
-      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', []);
+      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', codes);
       break;
     default:
       newState = null;
@@ -42,4 +48,5 @@ function factory(input) {
   }
   return newState;
 }
+
 module.exports = factory;
