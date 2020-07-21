@@ -27,11 +27,9 @@ function data() {
       console.log(err);
     }
   }
-  console.log(returns);
   return returns;
 }
 
-//const moduleJSON = exportModule(data());
 logger.info(`name of file: ${data().mainLibrary.library.identifier.id}.json`);
-
-//fs.writeFileSync(`${data().library.identifier.id}.json`, JSON.stringify(moduleJSON));
+const moduleJSON = exportModule(data());
+fs.writeFileSync(`${data().mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
