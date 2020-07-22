@@ -10,7 +10,7 @@ function data() {
   program
     .requiredOption('--elmJSON <file>', 'elm json to turn to synthea module')
     .option('--library <library>', 'directory of dependent libraries');
-  program.parse(process.argv);
+    .parse(process.argv);
   const returns = {};
   const mainFile = fs.readFileSync(program.elmJSON, 'utf8');
   returns.mainLibrary = JSON.parse(mainFile);
