@@ -9,11 +9,7 @@ program.version('0.0.1');
 function data() {
   program
     .requiredOption('--elmJSON <file>', 'elm json to turn to synthea module')
-<<<<<<< HEAD
     .option('--library <library>', 'directory of dependent libraries')
-=======
-    .option('--library <library>', 'directory of dependent libraries');
->>>>>>> 7930d79c12f77b09c4c7df91c12c4d822f671226
     .parse(process.argv);
   const returns = {};
   const mainFile = fs.readFileSync(program.elmJSON, 'utf8');
