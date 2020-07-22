@@ -24,7 +24,8 @@ function data() {
         returns.dependencies.push(JSON.parse(library));
       });
     } catch (err) {
-      console.log(err);
+      logger.error(err.message);
+      process.exit(1);
     }
   }
   return returns;
