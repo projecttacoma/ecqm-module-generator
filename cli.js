@@ -9,8 +9,8 @@ program.version('0.0.1');
 function data() {
   program
     .requiredOption('--elmJSON <file>', 'elm json to turn to synthea module')
-    .option('--library <library>', 'directory of dependent libraries');
-  program.parse(process.argv);
+    .option('--library <library>', 'directory of dependent libraries')
+    .parse(process.argv);
   const returns = {};
   const mainFile = fs.readFileSync(program.elmJSON, 'utf8');
   returns.mainLibrary = JSON.parse(mainFile);
@@ -24,12 +24,13 @@ function data() {
         returns.dependencies.push(JSON.parse(library));
       });
     } catch (err) {
-      console.log(err);
+      logger.error(err.message);
+      process.exit(1);
     }
   }
   return returns;
 }
-
-logger.info(`name of file: ${data().mainLibrary.library.identifier.id}.json`);
-const moduleJSON = exportModule(data());
-fs.writeFileSync(`${data().mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
+const mainFile = data().mainLibrary;
+logger.info(`name of file: ${mainFile.library.identifier.id}.json`);
+const moduleJSON = exportModule(mainFile);
+fs.writeFileSync(`${mainFile.library.identifier.id}.json`, JSON.stringify(moduleJSON));
