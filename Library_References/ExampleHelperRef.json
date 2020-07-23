@@ -1,0 +1,55 @@
+{
+    "library" : {
+       "annotation" : [ {
+          "startLine" : 7,
+          "startChar" : 14,
+          "endLine" : 7,
+          "endChar" : 39,
+          "message" : "Could not resolve membership operator for terminology target of the retrieve.",
+          "errorType" : "semantic",
+          "errorSeverity" : "warning",
+          "type" : "CqlToElmError"
+       } ],
+       "identifier" : {
+          "id" : "HelperLibrary",
+          "version" : "1.0.0"
+       },
+       "schemaIdentifier" : {
+          "id" : "urn:hl7-org:elm",
+          "version" : "r1"
+       },
+       "usings" : {
+          "def" : [ {
+             "localIdentifier" : "System",
+             "uri" : "urn:hl7-org:elm-types:r1"
+          }, {
+             "localIdentifier" : "FHIR",
+             "uri" : "http://hl7.org/fhir",
+             "version" : "4.0.0"
+          } ]
+       },
+       "valueSets" : {
+          "def" : [ {
+             "name" : "Colonoscopy",
+             "id" : "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020",
+             "accessLevel" : "Public"
+          } ]
+       },
+       "statements" : {
+          "def" : [ {
+             "name" : "Data",
+             "context" : "Patient",
+             "accessLevel" : "Public",
+             "expression" : {
+                "dataType" : "{http://hl7.org/fhir}Procedure",
+                "codeProperty" : "code",
+                "type" : "Retrieve",
+                "codes" : {
+                   "name" : "Colonoscopy",
+                   "type" : "ValueSetRef"
+                }
+             }
+          } ]
+       }
+    }
+ }
