@@ -1,6 +1,6 @@
 function loadData(data) {
   const dataTypes = [];
-  const deff = data.library.statements.def;
+  const deff = data.mainLibrary.library.statements.def;
   const filtered = deff.filter((d) => {
     return d.expression.operand !== undefined;
   });
@@ -28,7 +28,6 @@ function loadData(data) {
       });
     }
   }
-
   return dataTypes;
 }
 module.exports = loadData;
