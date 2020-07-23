@@ -30,7 +30,7 @@ function data() {
   }
   return returns;
 }
-const mainFile = data().mainLibrary;
-logger.info(`name of file: ${mainFile.library.identifier.id}.json`);
-const moduleJSON = exportModule(data());
-fs.writeFileSync(`${mainFile.library.identifier.id}.json`, JSON.stringify(moduleJSON));
+const mainFile = data();
+logger.info(`name of file: ${mainFile.mainLibrary.library.identifier.id}.json`);
+const moduleJSON = exportModule(mainFile);
+fs.writeFileSync(`${mainFile.mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
