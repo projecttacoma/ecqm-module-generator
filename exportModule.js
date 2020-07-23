@@ -8,7 +8,7 @@ function exportModule(data) {
   const dataTypes = loadData(data);
   const valueSets = loadValueSet(data);
   const moduleJSON = {
-    name: data.library.identifier.id,
+    name: data.mainLibrary.library.identifier.id,
     remarks: [],
     states: {
       Initial: new states.InitialState('Initial').toJSON(),
@@ -27,12 +27,10 @@ function exportModule(data) {
         StateClass = factory(object.dataType);
       }
       const stateName = `${object.dataType.substring(21)}_${i}`;
-
       moduleJSON.states[stateName] = StateClass.toJSON();
     }
   });
-
-  logger.info(`name of module: ${data.library.identifier.id}`);
+  logger.info(`name of module: ${data.mainLibrary.library.identifier.id}`);
   return moduleJSON;
 }
 module.exports = exportModule;

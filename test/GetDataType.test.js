@@ -2,7 +2,12 @@ const loadData = require('../GetDataType.js');
 const testJSON = require('./testJSON.json');
 const test2JSON = require('./test2JSON.json');
 const test3JSON = require('./test3JSON.json');
+const example = require('../Example.json');
 
+const returnObject1 = { mainLibrary: testJSON };
+const returnObject2 = { mainLibrary: test2JSON };
+const returnObject3 = { mainLibrary: test3JSON };
+const returnObject4 = { mainLibrary: example };
 const results1 = [
   { dataType: '{http://hl7.org/fhir}Patient', type: 'Retrieve' },
   {
@@ -55,12 +60,16 @@ const results3 = [
   },
 ];
 
+const results4 = [];
 test(`GetDataType.js returns the correct data types for testJSON file`, () => {
-  expect(loadData(testJSON)).toEqual(results1);
+  expect(loadData(returnObject1)).toEqual(results1);
 });
 test(`GetDataType.js returns the correct data types for test2JSON file`, () => {
-  expect(loadData(test2JSON)).toEqual(results2);
+  expect(loadData(returnObject2)).toEqual(results2);
 });
 test(`GetDataType.js returns the correct data types for test3JSON file`, () => {
-  expect(loadData(test3JSON)).toEqual(results3);
+  expect(loadData(returnObject3)).toEqual(results3);
+});
+test(`GetDataType.js returns the correct data types for test3JSON file`, () => {
+  expect(loadData(returnObject4)).toEqual(results4);
 });
