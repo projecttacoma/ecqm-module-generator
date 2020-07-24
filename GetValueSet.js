@@ -1,5 +1,5 @@
 function loadValueSet(data) {
-  const valueSetMap = [];
+  const valueSetMap = {};
   function getValueSet(file) {
     file.library.valueSets.def.forEach((set) => {
       valueSetMap[set.name] = set.id;
