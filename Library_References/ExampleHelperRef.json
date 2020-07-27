@@ -37,7 +37,6 @@
        },
        "statements" : {
           "def" : [ {
-            
                "name" : "Data",
                "context" : "Patient",
                "accessLevel" : "Public",
@@ -53,7 +52,7 @@
                      }
                   }
                }
-   } ]
+            }]
        }
     }
  }
