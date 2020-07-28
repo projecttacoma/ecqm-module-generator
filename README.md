@@ -19,9 +19,10 @@ npm install
 ### Input
 Input into terminal:
 ``` bash
-node cli.js --elmJSON <ELM File>
+node src/cli.js --elmJSON test/elm/<ELM File> [--library ../<directory>]
 ```
 The user can chose which ELM File to input. 
+If the ELM File depends on other files include [--library ../<directory>] where the directory has all the dependent files. 
 
 ### Output
 Example logger output in the terminal:
