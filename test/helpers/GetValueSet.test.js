@@ -2,7 +2,7 @@ const loadValueSet = require('../../src/helpers/GetValueSet.js');
 const testJSON = require('../elm/testJSON.json');
 const test2JSON = require('../elm/test2JSON.json');
 const test3JSON = require('../elm/test3JSON.json');
-const example = require('../../Example.json');
+const example = require('../elm/Example.json');
 const exampleRef = require('../../Library_References/ExampleHelperRef.json');
 
 const returnObject1 = { mainLibrary: testJSON };

@@ -1,4 +1,4 @@
-const factory = require('../../factory.js');
+const factory = require('../../src/states/factory.js');
 const JSONMap = require('./toJSONMap.js');
 
 Object.entries(JSONMap).forEach(([dataType, stateJSON]) => {
