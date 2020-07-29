@@ -1,33 +1,14 @@
+const _ = require('lodash');
+const { mapDeep } = require('deepdash')(_);
+
 function loadData(data) {
-  const dataTypes = [];
-  const deff = data.mainLibrary.library.statements.def;
-  const filtered = deff.filter((d) => {
-    return d.expression.operand !== undefined;
-  });
-  function traverseELM(array) {
-    if (array.operand === undefined) {
-      for (let h = 0; h < array.length; h += 1) {
-        if (array[h].operand.dataType === undefined) {
-          traverseELM(array[h].operand);
-        } else dataTypes.push(array[h].operand);
-      }
-    }
-    return array;
-  }
-  let section;
-  for (let i = 0; i < filtered.length; i += 1) {
-    section = filtered[i].expression.operand;
-    if (section.dataType !== undefined) {
-      dataTypes.push(section);
-    } else {
-      section.forEach((o) => {
-        const returnResult = traverseELM(o.operand);
-        if (returnResult.dataType !== undefined) {
-          dataTypes.push(returnResult);
-        }
-      });
-    }
-  }
+  const expressions = data.mainLibrary.library.statements.def.map((e) => e.expression);
+  const dataTypes = _.compact(
+    mapDeep(expressions, (value, key) => {
+      if (value.dataType && (key === 'expression' || key === 'operand')) return value;
+      return null;
+    })
+  );
   return dataTypes;
 }
 module.exports = loadData;

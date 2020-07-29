@@ -59,7 +59,6 @@ const results3 = [
     codes: { name: 'Colonoscopy', type: 'ValueSetRef' },
   },
 ];
-
 const results4 = [];
 test(`GetDataType.js returns the correct data types for testJSON file`, () => {
   expect(loadData(returnObject1)).toEqual(results1);
