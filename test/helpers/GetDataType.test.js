@@ -1,13 +1,14 @@
-const loadData = require('../GetDataType.js');
-const testJSON = require('./testJSON.json');
-const test2JSON = require('./test2JSON.json');
-const test3JSON = require('./test3JSON.json');
-const example = require('../Example.json');
+const loadData = require('../../src/helpers/GetDataType.js');
+const testJSON = require('../elm/testJSON.json');
+const test2JSON = require('../elm/test2JSON.json');
+const test3JSON = require('../elm/test3JSON.json');
+const example = require('../elm/Example.json');
+const dependentLib = require('../../Library_References/ExampleHelperRef.json');
 
 const returnObject1 = { mainLibrary: testJSON };
 const returnObject2 = { mainLibrary: test2JSON };
 const returnObject3 = { mainLibrary: test3JSON };
-const returnObject4 = { mainLibrary: example };
+const returnObject4 = { mainLibrary: example, dependencies: [dependentLib] };
 const results1 = [
   { dataType: '{http://hl7.org/fhir}Patient', type: 'Retrieve' },
   {
@@ -59,7 +60,17 @@ const results3 = [
     codes: { name: 'Colonoscopy', type: 'ValueSetRef' },
   },
 ];
-const results4 = [];
+const results4 = [
+  {
+    dataType: '{http://hl7.org/fhir}Procedure',
+    codeProperty: 'code',
+    type: 'Retrieve',
+    codes: {
+      name: 'Colonoscopy',
+      type: 'ValueSetRef',
+    },
+  },
+];
 test(`GetDataType.js returns the correct data types for testJSON file`, () => {
   expect(loadData(returnObject1)).toEqual(results1);
 });
@@ -69,6 +80,6 @@ test(`GetDataType.js returns the correct data types for test2JSON file`, () => {
 test(`GetDataType.js returns the correct data types for test3JSON file`, () => {
   expect(loadData(returnObject3)).toEqual(results3);
 });
-test(`GetDataType.js returns the correct data types for test3JSON file`, () => {
+test(`GetDataType.js returns the correct data types for Example file`, () => {
   expect(loadData(returnObject4)).toEqual(results4);
 });
