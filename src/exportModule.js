@@ -1,8 +1,8 @@
-const loadData = require('./GetDataType.js');
-const loadValueSet = require('./GetValueSet.js');
-const states = require('./states.js');
-const factory = require('./factory.js');
-const logger = require('./winston.js');
+const loadData = require('./helpers/GetDataType.js');
+const loadValueSet = require('./helpers/GetValueSet.js');
+const states = require('./states/states.js');
+const factory = require('./states/factory.js');
+const logger = require('./helpers/winston.js');
 
 function exportModule(data) {
   const dataTypes = loadData(data);

@@ -2,7 +2,7 @@ const { Command } = require('commander');
 const fs = require('fs');
 const path = require('path');
 const exportModule = require('./exportModule.js');
-const logger = require('./winston.js');
+const logger = require('./helpers/winston.js');
 
 const program = new Command();
 program.version('0.0.1');
