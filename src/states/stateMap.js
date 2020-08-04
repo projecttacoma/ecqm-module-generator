@@ -1,4 +1,4 @@
-const classes = require('./states.js');
+const classes = require('./states.js'); // .js
 
 const prefix = '{http://hl7.org/fhir}';
 const STATE_LOOKUP = {

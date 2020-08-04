@@ -1,3 +1,4 @@
+// rename this file to logger.js
 const winston = require('winston');
 
 const logger = winston.createLogger({

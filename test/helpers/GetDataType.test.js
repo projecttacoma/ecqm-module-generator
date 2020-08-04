@@ -1,14 +1,17 @@
 const loadData = require('../../src/helpers/GetDataType.js');
-const testJSON = require('../elm/testJSON.json');
+const testJSON = require('../elm/testJSON.json'); // maybe different file names
 const test2JSON = require('../elm/test2JSON.json');
 const test3JSON = require('../elm/test3JSON.json');
 const example = require('../elm/Example.json');
 const dependentLib = require('../../Library_References/ExampleHelperRef.json');
 
+// variable names
 const returnObject1 = { mainLibrary: testJSON };
 const returnObject2 = { mainLibrary: test2JSON };
 const returnObject3 = { mainLibrary: test3JSON };
 const returnObject4 = { mainLibrary: example, dependencies: [dependentLib] };
+
+// consider moving results to their own file
 const results1 = [
   { dataType: '{http://hl7.org/fhir}Patient', type: 'Retrieve' },
   {

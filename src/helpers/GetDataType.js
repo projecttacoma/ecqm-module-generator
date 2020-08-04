@@ -1,10 +1,27 @@
 const _ = require('lodash');
 const { mapDeep } = require('deepdash')(_);
 
+
+// Group similar functions (e.g. getDataType and getExpressionRefs together 
+
+/*
+function doSomething(def, condition) {
+  return _.compact(mapDeep(def, (value, key) => if (condition(value,key)) return value));
+}
+
+doSomething(def, (value, key) => {
+  return value.dataType !== undefined; 
+})
+doSomething(def, (value, key) => {
+  return value.libraryName !== undefined; 
+})
+*/
+
 function getDataType(def) {
   return _.compact(
-    mapDeep(def, (value, key) => {
-      if (value.dataType && (key === 'expression' || key === 'operand')) {
+    mapDeep(def, (value) => {
+      // return value.dataType ? value : null
+      if (value.dataType) { // maybe keep this???????????>????
         return value;
       }
       return null;
@@ -20,14 +37,17 @@ function loadDependencies(def) {
 }
 function getExpressionRefs(def) {
   return _.compact(
-    mapDeep(def, (value, key) => {
-      if (value.libraryName && value.type === 'ExpressionRef' && (key === 'expression' || key === 'operand')) {
+    mapDeep(def, (value) => {
+      if (value.libraryName && value.type === 'ExpressionRef') {
         return value;
       }
       return null;
     })
   );
 }
+
+// add docstring
+// add inline comments to more complex code (like finds, maps, etc.)
 function loadData(data) {
   let dataTypes = getDataType(data.mainLibrary.library.statements.def);
   if (data.mainLibrary.library.includes !== undefined && data.dependencies !== undefined) {

@@ -1,9 +1,15 @@
-const loadData = require('./helpers/GetDataType.js');
+const loadData = require('./helpers/GetDataType.js'); // .js
 const loadValueSet = require('./helpers/GetValueSet.js');
 const states = require('./states/states.js');
 const factory = require('./states/factory.js');
 const logger = require('./helpers/winston.js');
 
+/**
+ * describe what the function does
+ *
+ * @param {Object} data - what is this argument
+ * @returns {Object} what is the return value
+ */
 function exportModule(data) {
   const dataTypes = loadData(data);
   const valueSets = loadValueSet(data);
@@ -30,7 +36,7 @@ function exportModule(data) {
       moduleJSON.states[stateName] = StateClass.toJSON();
     }
   });
-  logger.info(`name of module: ${data.mainLibrary.library.identifier.id}`);
+  logger.info(`name of module: ${data.mainLibrary.library.identifier.id}`); // maybe change wording of log
   return moduleJSON;
 }
 module.exports = exportModule;

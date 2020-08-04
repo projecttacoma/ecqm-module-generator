@@ -1,17 +1,19 @@
-const states = require('./states.js');
+const states = require('./states.js'); // .js
 
-function factory(dataType, link = null) {
+// add docstring
+function factory(dataType, link = null) { // update to take a name argument
   let newState;
   let codes;
-  if (link != null) {
+  if (link !== null) {
     codes = [{ code: '', system: '', display: '', value_set: link }];
   } else {
     codes = [];
   }
-  switch (dataType) {
+
+  // do the return directly in each case, get rid of newState variable and break statements
+  switch (dataType) { // update each constructor to pass in the name argument
     case '{http://hl7.org/fhir}Encounter':
-      newState = new states.EncounterState('Encounter', 'encounter_class', codes);
-      break;
+      return new states.EncounterState('Encounter', 'encounter_class', codes);
     case '{http://hl7.org/fhir}Condition':
       newState = new states.ConditionOnsetState('Condition', 'target_encounter', codes);
       break;
