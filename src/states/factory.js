@@ -1,8 +1,14 @@
-const states = require('./states.js'); // .js
+const states = require('./states');
 
-// add docstring
-function factory(dataType, link = null) { // update to take a name argument
-  let newState;
+/**
+ * creates an instance of a specified class with default values
+ *
+ * @param {string} dataType - the dataType from the object returned by getDataType.js
+ * @param {string} name - the name from the object returned by getDataType.js
+ * @param {string} link - link to the corresponding specific valueset, if there is no valueset then there is no link
+ * @returns {Object} - instance of the state class from the data type with corresponding name
+ */
+function factory(dataType, name, link = null) {
   let codes;
   if (link !== null) {
     codes = [{ code: '', system: '', display: '', value_set: link }];
@@ -10,45 +16,32 @@ function factory(dataType, link = null) { // update to take a name argument
     codes = [];
   }
 
-  // do the return directly in each case, get rid of newState variable and break statements
-  switch (dataType) { // update each constructor to pass in the name argument
+  switch (dataType) {
     case '{http://hl7.org/fhir}Encounter':
-      return new states.EncounterState('Encounter', 'encounter_class', codes);
+      return new states.EncounterState(name, null, codes);
     case '{http://hl7.org/fhir}Condition':
-      newState = new states.ConditionOnsetState('Condition', 'target_encounter', codes);
-      break;
+      return new states.ConditionOnsetState(name, null, codes);
     case '{http://hl7.org/fhir}AllergyIntolerance':
-      newState = new states.AllergyOnsetState('AllergyIntolerance', 'target_encounter', codes);
-      break;
+      return new states.AllergyOnsetState(name, null, codes);
     case '{http://hl7.org/fhir}Medication':
-      newState = new states.MedicationOrderState('Medication', codes);
-      break;
+      return new states.MedicationOrderState(name, codes);
     case '{http://hl7.org/fhir}CarePlan':
-      newState = new states.CarePlanStartState('CarePlan', codes);
-      break;
+      return new states.CarePlanStartState(name, codes);
     case '{http://hl7.org/fhir}Procedure':
-      newState = new states.ProcedureState('Procedure', codes);
-      break;
+      return new states.ProcedureState(name, codes);
     case '{http://hl7.org/fhir}ImagingStudy':
-      newState = new states.ImagingStudyState('ImagingStudy', 'procedure_code', []);
-      break;
+      return new states.ImagingStudyState(name, null, []);
     case '{http://hl7.org/fhir}Device':
-      newState = new states.DeviceState('Device', 'code');
-      break;
+      return new states.DeviceState(name, null);
     case '{http://hl7.org/fhir}SupplyDelivery':
-      newState = new states.SupplyListState('SupplyDelivery', 'supplies');
-      break;
+      return new states.SupplyListState(name, null);
     case '{http://hl7.org/fhir}Observation':
-      newState = new states.ObservationState('Observation', 'category', 'unit', codes);
-      break;
+      return new states.ObservationState(name, null, null, codes);
     case '{http://hl7.org/fhir}DiagnosticReport':
-      newState = new states.DiagnosticReportState('DiagnosticReport', 'number_of_observations', codes);
-      break;
+      return new states.DiagnosticReportState(name, null, codes);
     default:
-      newState = null;
-      break;
+      return null;
   }
-  return newState;
 }
 
 module.exports = factory;
