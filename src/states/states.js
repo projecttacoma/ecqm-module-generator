@@ -12,12 +12,14 @@ class BaseState {
     };
   }
 }
+
 class InitialState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'Initial';
   }
 }
+
 class EncounterState extends BaseState {
   constructor(name, encounterClass, codes) {
     super(name);
@@ -34,12 +36,14 @@ class EncounterState extends BaseState {
     };
   }
 }
+
 class EncounterEndState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'EncounterEnd';
   }
 }
+
 class ConditionOnsetState extends BaseState {
   constructor(name, targetEncounter, codes) {
     super(name);
@@ -56,6 +60,7 @@ class ConditionOnsetState extends BaseState {
     };
   }
 }
+
 class ConditionEndState extends BaseState {
   constructor(name) {
     super(name);
@@ -78,12 +83,14 @@ class AllergyOnsetState extends BaseState {
     };
   }
 }
+
 class AllergyEndState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'AllergyEnd';
   }
 }
+
 class MedicationOrderState extends BaseState {
   constructor(name, codes) {
     super(name);
@@ -98,12 +105,14 @@ class MedicationOrderState extends BaseState {
     };
   }
 }
+
 class MedicationEndState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'MedicationEnd';
   }
 }
+
 class CarePlanStartState extends BaseState {
   constructor(name, codes) {
     super(name);
@@ -118,12 +127,14 @@ class CarePlanStartState extends BaseState {
     };
   }
 }
+
 class CarePlanEndState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'CarePlanEnd';
   }
 }
+
 class ProcedureState extends BaseState {
   constructor(name, codes, duration = undefined) {
     super(name);
@@ -140,6 +151,7 @@ class ProcedureState extends BaseState {
     };
   }
 }
+
 class ImagingStudyState extends BaseState {
   constructor(name, procedureCode, series) {
     super(name);
@@ -156,6 +168,7 @@ class ImagingStudyState extends BaseState {
     };
   }
 }
+
 class DeviceState extends BaseState {
   constructor(name, code) {
     super(name);
@@ -170,12 +183,14 @@ class DeviceState extends BaseState {
     };
   }
 }
+
 class DeviceEndState extends BaseState {
   constructor(name) {
     super(name);
     this.type = 'DeviceEnd';
   }
 }
+
 class SupplyListState extends BaseState {
   constructor(name, supplies) {
     super(name);
@@ -190,6 +205,7 @@ class SupplyListState extends BaseState {
     };
   }
 }
+
 class VitalSignState extends BaseState {
   constructor(name, vitalSign, unit) {
     super(name);
@@ -206,6 +222,7 @@ class VitalSignState extends BaseState {
     };
   }
 }
+
 class ObservationState extends BaseState {
   constructor(name, category, unit, codes) {
     super(name);
@@ -224,6 +241,7 @@ class ObservationState extends BaseState {
     };
   }
 }
+
 class MultiObservationState extends BaseState {
   constructor(name, category, numberOfObservations, codes) {
     super(name);
@@ -242,6 +260,7 @@ class MultiObservationState extends BaseState {
     };
   }
 }
+
 class DiagnosticReportState extends BaseState {
   constructor(name, numberOfObservations, codes) {
     super(name);
@@ -258,6 +277,7 @@ class DiagnosticReportState extends BaseState {
     };
   }
 }
+
 class SymptomState extends BaseState {
   constructor(name, symptom, cause, probability) {
     super(name);
