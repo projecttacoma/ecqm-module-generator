@@ -43,3 +43,4 @@ const mainELM = loadELM();
 logger.info(`exporting file with name: ${mainELM.mainLibrary.library.identifier.id}.json`);
 const moduleJSON = exportModule(mainELM);
 fs.writeFileSync(`${mainELM.mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
+logger.info(`${mainELM.mainLibrary.library.identifier.id}.json was exported successfully`);
