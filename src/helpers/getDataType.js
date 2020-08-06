@@ -54,12 +54,18 @@ function loadData(ELMFiles) {
             return reff.name === e.name;
           });
         });
+        dataTypes = dataTypes.concat(
+          getDataTypesAndRefs(expression, (value) => {
+            return value.dataType ? value : null;
+          })
+        );
+      } else {
+        dataTypes = dataTypes.concat(
+          getDataTypesAndRefs(expression, (value) => {
+            return value.dataType ? value : null;
+          })
+        );
       }
-      dataTypes = dataTypes.concat(
-        getDataTypesAndRefs(expression, (value) => {
-          return value.dataType ? value : null;
-        })
-      );
     });
   }
   return dataTypes;
