@@ -19,7 +19,7 @@ npm install
 ### Input
 Input into terminal:
 ``` bash
-node src/cli.js --elmJSON test/elm/<ELM File> [--library ../<directory>]
+node src/cli.js --elmJSON test/elm/<ELM File> [--dependency <directory>]
 ```
 The user can chose which ELM File to input.
 If the ELM File depends on other libraries include a directory that contains all of the dependent ELM Files.
