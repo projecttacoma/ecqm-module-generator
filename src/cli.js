@@ -24,7 +24,7 @@ function loadELM() {
     const directoryPath = path.resolve(program.dependency, './');
     ELMFiles.dependencies = [];
     const dependentFiles = fs.readdirSync(directoryPath).filter((file) => {
-      return file.split('.').pop() === 'json' ? file : null;
+      return file.split('.').pop() === 'json';
     });
     try {
       dependentFiles.forEach((file) => {
