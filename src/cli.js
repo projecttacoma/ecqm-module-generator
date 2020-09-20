@@ -1,5 +1,4 @@
 const { Command } = require('commander');
-const { Base64 } = require('js-base64');
 const fs = require('fs');
 const exportModule = require('./exportModule');
 const logger = require('./helpers/logger');
