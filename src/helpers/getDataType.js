@@ -35,7 +35,12 @@ function loadData(ELMFiles) {
       return value.libraryName && value.type === 'ExpressionRef' ? value : null;
     });
     expressionRefs.forEach((ref) => {
-      const libraryIdentifier = dependencyMap[ref.libraryName];
+      let libraryIdentifier;
+      if (dependencyMap[ref.libraryName].includes('connectathon')) {
+        libraryIdentifier = dependencyMap[ref.libraryName].substring(41);
+      } else {
+        libraryIdentifier = dependencyMap[ref.libraryName];
+      }
       // finds the ELM file with the corresponding id to the path from the main library
       const elm = ELMFiles.dependencies.find((dependency) => {
         return dependency.library.identifier.id === libraryIdentifier;
