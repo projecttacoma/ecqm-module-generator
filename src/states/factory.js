@@ -10,8 +10,25 @@ const states = require('./states');
  */
 function factory(dataType, name, link = null) {
   let codes;
+  let systemID;
+  if (
+    dataType === '{http://hl7.org/fhir}Encounter' ||
+    dataType === '{http://hl7.org/fhir}Condition' ||
+    dataType === '{http://hl7.org/fhir}AllergyIntolerance' ||
+    dataType === '{http://hl7.org/fhir}CarePlan' ||
+    dataType === '{http://hl7.org/fhir}Procedure' ||
+    dataType === '{http://hl7.org/fhir}ImagingStudy' ||
+    dataType === '{http://hl7.org/fhir}Device' ||
+    dataType === '{http://hl7.org/fhir}SuppyDelivery'
+  ) {
+    systemID = 'SNOMED-CT';
+  } else if (dataType === '{http://hl7.org/fhir}Observation' || dataType === '{http://hl7.org/fhir}DiagnosticReport') {
+    systemID = 'LOINC';
+  } else if (dataType === '{http://hl7.org/fhir}Medication') {
+    systemID = 'RxNorm';
+  }
   if (link !== null) {
-    codes = [{ code: '', system: '', display: '', value_set: link }];
+    codes = [{ code: '', system: systemID, display: '', value_set: link }];
   } else {
     codes = [];
   }
