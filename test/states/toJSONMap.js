@@ -5,7 +5,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'SNOMED-CT',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -19,7 +19,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'SNOMED-CT',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -32,7 +32,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'SNOMED-CT',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -44,7 +44,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'RxNorm',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -56,7 +56,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'SNOMED-CT',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -68,7 +68,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'SNOMED-CT',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -99,7 +99,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'LOINC',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
@@ -115,7 +115,7 @@ const JSONMap = {
     codes: [
       {
         code: '',
-        system: '',
+        system: 'LOINC',
         display: '',
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
