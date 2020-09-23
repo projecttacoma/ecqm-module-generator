@@ -9,7 +9,7 @@ program.version('0.0.1');
 function loadELM() {
   program
     .version('0.0.1')
-    .requiredOption('--elmJSONBundle <bundle>', 'elm json to turn to synthea module')
+    .requiredOption('-d, --bundle <bundle>', 'elm json to turn to synthea module')
     .parse(process.argv);
 
   const ELMFiles = {};
