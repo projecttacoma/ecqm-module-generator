@@ -7,7 +7,7 @@ const loadELM = require('./loadBundle.js');
 const program = new Command();
 program
   .version('0.0.1')
-  .requiredOption('-d, --bundle <bundle>', 'elm json to turn to synthea module')
+  .requiredOption('-b, --bundle <bundle>', 'elm json to turn to synthea module')
   .parse(process.argv);
 
 const mainELM = loadELM(program.bundle);
