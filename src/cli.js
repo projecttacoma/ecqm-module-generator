@@ -2,7 +2,7 @@ const { Command } = require('commander');
 const fs = require('fs');
 const exportModule = require('./exportModule');
 const logger = require('./helpers/logger');
-const loadELM = require('./loadBundle.js');
+const loadELM = require('./helpers/loadBundle.js');
 
 const program = new Command();
 program

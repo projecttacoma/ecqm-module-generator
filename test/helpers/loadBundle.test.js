@@ -1,4 +1,4 @@
-const loadBundle = require('../../src/loadBundle');
+const loadBundle = require('../../src/helpers/loadBundle');
 const bundle = require('../elm/EXM130-7.3.000-fixture-bundle.json');
 const result = require('../elm/exm130-elm-files.json');
 
