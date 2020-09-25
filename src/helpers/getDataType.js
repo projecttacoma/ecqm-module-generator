@@ -36,9 +36,13 @@ function loadData(ELMFiles) {
     });
     expressionRefs.forEach((ref) => {
       const libraryIdentifier = dependencyMap[ref.libraryName];
+
       // finds the ELM file with the corresponding id to the path from the main library
       const elm = ELMFiles.dependencies.find((dependency) => {
-        return dependency.library.identifier.id === libraryIdentifier;
+        return (
+          dependency.library.identifier.id === libraryIdentifier ||
+          `${dependency.library.identifier.system}/${dependency.library.identifier.id}` === libraryIdentifier
+        );
       });
       // returns the object from the dependent library that has the corresponding name to the expression ref object in the main library
       let expression = elm.library.statements.def.find((e) => {

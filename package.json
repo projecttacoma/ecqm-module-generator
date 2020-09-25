@@ -23,6 +23,7 @@
   "dependencies": {
     "commander": "^5.1.0",
     "deepdash": "^5.2.1",
+    "js-base64": "^3.5.2",
     "lodash": "^4.17.19",
     "winston": "^3.3.3"
   }

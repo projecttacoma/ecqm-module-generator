@@ -16,7 +16,7 @@ function loadValueSet(ELMFiles) {
   }
   if (ELMFiles.dependencies !== undefined) {
     ELMFiles.dependencies.forEach((dependency) => {
-      getValueSet(dependency);
+      if (dependency.library.valueSets !== undefined) getValueSet(dependency);
     });
   }
   return valueSetMap;
