@@ -238,6 +238,9 @@ class ObservationState extends BaseState {
       category: this.category,
       unit: this.unit,
       codes: this.codes,
+      exact: {
+        quantity: 1,
+      },
     };
   }
 }
