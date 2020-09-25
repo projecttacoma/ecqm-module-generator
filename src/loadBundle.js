@@ -1,11 +1,9 @@
 const { Base64 } = require('js-base64');
-const fs = require('fs');
 const logger = require('./helpers/logger');
 
-function loadELM(input) {
+function loadELM(bundle) {
   const ELMFiles = {};
   try {
-    const bundle = JSON.parse(fs.readFileSync(input, 'utf8'));
     logger.info(`Sucessfully loaded in bundle with id: ${bundle.id}`);
     const measure = bundle.entry.find(({ resource }) => resource.resourceType === 'Measure');
     const measureID = measure.resource.library[0];
