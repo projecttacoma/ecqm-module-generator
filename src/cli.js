@@ -10,7 +10,8 @@ program
   .requiredOption('-b, --bundle <bundle>', 'elm json to turn to synthea module')
   .parse(process.argv);
 
-const mainELM = loadELM(program.bundle);
+const bundle = JSON.parse(fs.readFileSync(program.bundle, 'utf8'));
+const mainELM = loadELM(bundle);
 logger.info(`exporting file with name: ${mainELM.mainLibrary.library.identifier.id}.json`);
 const moduleJSON = exportModule(mainELM);
 fs.writeFileSync(`${mainELM.mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
