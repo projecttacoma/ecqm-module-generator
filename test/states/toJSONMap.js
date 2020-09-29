@@ -104,6 +104,9 @@ const JSONMap = {
         value_set: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020',
       },
     ],
+    exact: {
+      quantity: 1,
+    },
   },
   '{http://hl7.org/fhir}DiagnosticReport': {
     type: 'DiagnosticReport',
