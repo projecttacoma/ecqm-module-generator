@@ -10,9 +10,10 @@ program
   .parse(process.argv);
 
 const bundle = JSON.parse(fs.readFileSync(program.bundle, 'utf8'));
-const generator = new Generator(bundle, true);
-const ELM = generator.generate();
+// false for logs, true for no logs
+const generator = new Generator(bundle, false);
+const moduleJSON = generator.generate();
 
-logger.info(`exporting file with name: ${ELM.name}.json`);
-fs.writeFileSync(`${ELM.name}.json`, generator);
-logger.info(`${ELM.name}.json was exported successfully`);
+logger.info(`exporting file with name: ${moduleJSON.name}.json`);
+fs.writeFileSync(`${moduleJSON.name}.json`, JSON.stringify(moduleJSON));
+logger.info(`${moduleJSON.name}.json was exported successfully`);

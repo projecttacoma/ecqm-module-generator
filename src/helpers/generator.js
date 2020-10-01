@@ -4,8 +4,8 @@ const loadBundle = require('./loadBundle');
 const exportModule = require('../exportModule');
 
 class Generator {
-  constructor(bundle, bool) {
-    logger.silent = bool;
+  constructor(bundle, disableLogging) {
+    logger.silent = disableLogging;
     this.bundle = bundle;
   }
 
