@@ -1,7 +1,6 @@
-const logger = require('./logger');
-
-const loadBundle = require('./loadBundle');
-const exportModule = require('../exportModule');
+const logger = require('./helpers/logger');
+const loadBundle = require('./helpers/loadBundle');
+const exportModule = require('./exportModule');
 
 class Generator {
   constructor(bundle, disableLogging) {
