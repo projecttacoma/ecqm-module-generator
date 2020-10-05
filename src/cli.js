@@ -1,7 +1,7 @@
 const { Command } = require('commander');
 const fs = require('fs');
 const logger = require('./helpers/logger');
-const Generator = require('./helpers/generator.js');
+const Generator = require('./generator.js');
 
 const program = new Command();
 program
