@@ -1,8 +1,7 @@
 const { Command } = require('commander');
 const fs = require('fs');
-const exportModule = require('./exportModule');
 const logger = require('./helpers/logger');
-const loadELM = require('./helpers/loadBundle.js');
+const Generator = require('./generator.js');
 
 const program = new Command();
 program
@@ -11,8 +10,10 @@ program
   .parse(process.argv);
 
 const bundle = JSON.parse(fs.readFileSync(program.bundle, 'utf8'));
-const mainELM = loadELM(bundle);
-logger.info(`exporting file with name: ${mainELM.mainLibrary.library.identifier.id}.json`);
-const moduleJSON = exportModule(mainELM);
-fs.writeFileSync(`${mainELM.mainLibrary.library.identifier.id}.json`, JSON.stringify(moduleJSON));
-logger.info(`${mainELM.mainLibrary.library.identifier.id}.json was exported successfully`);
+// false for logs, true for no logs
+const generator = new Generator(bundle, false);
+const moduleJSON = generator.generate();
+
+logger.info(`exporting file with name: ${moduleJSON.name}.json`);
+fs.writeFileSync(`${moduleJSON.name}.json`, JSON.stringify(moduleJSON));
+logger.info(`${moduleJSON.name}.json was exported successfully`);
