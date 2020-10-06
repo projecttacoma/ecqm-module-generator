@@ -30,7 +30,7 @@ function loadELM(bundle) {
     });
     logger.info(`adding dependencies to ELMFiles`);
   } catch (err) {
-    throw new Error('Error loading ELM data from bundle');
+    throw new Error(`Error loading ELM data from bundle: ${err.message}`);
   }
   return ELMFiles;
 }
