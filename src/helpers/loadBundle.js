@@ -4,10 +4,10 @@ const logger = require('./logger');
 function loadELM(bundle) {
   const ELMFiles = {};
   try {
-    logger.info(`Sucessfully loaded in bundle with id: ${bundle.id}`);
     const measure = bundle.entry.find(({ resource }) => resource.resourceType === 'Measure');
     const measureID = measure.resource.library[0];
     const ID = measureID.substring(measureID.indexOf('/') + 1);
+    logger.info(`Sucessfully loaded in bundle with id: ${bundle.id}`);
     logger.info(`finding main library with ID: ${ID}`);
     const dataResource = bundle.entry.find(({ resource }) => resource.id === ID);
     const encodedData = dataResource.resource.content.find((c) => c.contentType === 'application/elm+json').data;
@@ -16,7 +16,6 @@ function loadELM(bundle) {
     const dependencies = measure.resource.relatedArtifact.filter((d) => {
       return d.type === 'depends-on';
     });
-
     ELMFiles.dependencies = [];
     const dependenciesID = [];
     dependencies.forEach((dd) => {
@@ -31,8 +30,7 @@ function loadELM(bundle) {
     });
     logger.info(`adding dependencies to ELMFiles`);
   } catch (err) {
-    logger.error(err.message);
-    process.exit(1);
+    throw new Error('Error loading ELM data from bundle');
   }
   return ELMFiles;
 }
