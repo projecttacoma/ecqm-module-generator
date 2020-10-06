@@ -16,7 +16,7 @@ let moduleJSON;
 try {
   moduleJSON = generator.generate();
 } catch (err) {
-  console.log(err.message);
+  logger.error(err.message);
   process.exit(1);
 }
 
