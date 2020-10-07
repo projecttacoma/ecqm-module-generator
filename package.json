@@ -1,6 +1,9 @@
 {
   "name": "ecqm_module_generator",
   "version": "1.0.0",
+  "bin":{
+    "generate-module":"node ./src/cli.js"
+  },
   "description": "",
   "main": "src/index.js",
   "scripts": {
