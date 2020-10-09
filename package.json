@@ -1,6 +1,6 @@
 {
   "name": "ecqm-module-generator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "bin": {
     "generate-module": "./src/cli.js"
   },
