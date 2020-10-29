@@ -1,10 +1,8 @@
-const logger = require('./helpers/logger');
 const loadBundle = require('./helpers/loadBundle');
 const exportModule = require('./exportModule');
 
 class Generator {
-  constructor(bundle, disableLogging) {
-    logger.silent = disableLogging;
+  constructor(bundle) {
     this.bundle = bundle;
   }
 
