@@ -12,7 +12,7 @@
     "lint:fix": "eslint \"./**/*.js\" --fix",
     "prettier": "prettier --check \"**/*.js\"",
     "prettier:fix": "prettier --write \"**/*.js\"",
-    "webpack": "webpack"
+    "prepare": "webpack"
   },
   "author": "",
   "license": "Apache-2.0",
