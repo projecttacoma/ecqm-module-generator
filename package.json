@@ -5,29 +5,34 @@
     "generate-module": "./src/cli.js"
   },
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint \"**/*.js\"",
     "lint:fix": "eslint \"./**/*.js\" --fix",
     "prettier": "prettier --check \"**/*.js\"",
-    "prettier:fix": "prettier --write \"**/*.js\""
+    "prettier:fix": "prettier --write \"**/*.js\"",
+    "webpack": "webpack"
   },
   "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.21.2",
     "jest": "^26.0.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "webpack": "^5.3.1",
+    "webpack-cli": "^4.1.0"
   },
   "dependencies": {
     "commander": "^5.1.0",
     "deepdash": "^5.2.1",
     "js-base64": "^3.5.2",
-    "lodash": "^4.17.19",
-    "winston": "^3.3.3"
+    "lodash": "^4.17.19"
   }
 }
