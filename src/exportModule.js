@@ -2,7 +2,6 @@ const loadData = require('./helpers/getDataType');
 const loadValueSet = require('./helpers/getValueSet');
 const states = require('./states/states');
 const factory = require('./states/factory');
-const logger = require('./helpers/logger');
 
 /**
  * exports the inputted ELM Files as module JSON that can be uploaded or pasted into Synthea
@@ -27,11 +26,11 @@ function exportModule(ELMFiles) {
     if (object.dataType !== null && factory(object.dataType, stateName) !== null) {
       let StateClass;
       if (object.codes !== undefined && object.type === 'Retrieve') {
-        logger.info(`adding state of type: ${object.dataType}`);
-        logger.info(`adding value_set with id of: ${valueSets[object.codes.name]}`);
+        console.log(`adding state of type: ${object.dataType}`);
+        console.log(`adding value_set with id of: ${valueSets[object.codes.name]}`);
         StateClass = factory(object.dataType, stateName, valueSets[object.codes.name]);
       } else {
-        logger.info(`adding state of type: ${object.dataType}`);
+        console.log(`adding state of type: ${object.dataType}`);
         StateClass = factory(object.dataType, stateName);
       }
       moduleJSON.states[stateName] = StateClass.toJSON();
